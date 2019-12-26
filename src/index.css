@@ -1,0 +1,90 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "iransans";
+    src: url("/assests/font/IRANSansWeb.woff2") format('woff2'),
+         url("/assests/font/IRANSansWeb.woff") format('woff'),
+         url("assests/font/IRANSansWeb.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+h1,h2,h3,h4,h5,h6,span,p,a,label,input[type=submit] {
+    font-family: "iransans", sans-serif !important;
+}
+
+.resize-none {
+    resize: none;
+}
+
+.dir-ltr {
+    direction: ltr;
+}
+
+.icon.icon-pin {
+    mask-image: url("assests/pin.svg"); /* map marker icon */
+    display: inline-block;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: darkcyan;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.map div:not(.next-part-button, .drag-icon) { /* to make map full width */
+    width: 100% !important;
+    background-color: transparent;
+}
+
+.map {
+    top: 0;
+    height: 100vh; /* for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100); /* to fix android chrome 100vh bug - part 2 - part 1 in firstPage component*/
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .map {
+        position: sticky !important; /* to make map sticky only on bigger screens */
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .map {
+        position: sticky !important;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .map {
+        position: sticky !important;
+    }
+}
+
+.map-info {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #ffffffb3;
+}
+
+.next-part-button {
+    bottom: 0;
+    left: 0;
+    background-color: darkcyan !important;
+    color: white !important;
+}
+
+.pigeon-attribution { /* to hidden unimportant data in map */
+    display: none;
+}
+
+.bg-dark-cyan {
+    background-color: darkcyan;
+}
