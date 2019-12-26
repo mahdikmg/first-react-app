@@ -12,6 +12,7 @@ export default class SecondPage extends React.Component {
             loading: true, /* GET request status */
             error: false /* error status */
         }
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     /* will push 10 new items from datalist to dataListPagination and then display them to user */
@@ -50,18 +51,25 @@ export default class SecondPage extends React.Component {
             })
 
         })
+        window.addEventListener("scroll", this.handleScroll);
 
-        window.addEventListener("scroll", e => {
-            this.handleScroll(e);  /* on scroll, handleScroll will be called */
-        });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     /* if scrolling continues to the bottom of the page, next 10 items will be displayed to user */
-    handleScroll = () => {
-        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 100)) {
-            this.dataAdder();
+    handleScroll() {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + window.pageYOffset;
+        if (windowBottom >= docHeight) {
+            this.dataAdder()
         }
-    };
+    }
 
     render() {
         const { loading, error } = this.state
