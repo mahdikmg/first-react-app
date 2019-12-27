@@ -42,17 +42,15 @@ export default class SecondPage extends React.Component {
                     loading: false /* when GET request completed loading status will change to false */
                 })
                 this.dataAdder() /* push first 9 items to display in page */
-                console.log(data)
             }
         }).catch(error => {
             this.setState({
                 loading: false,
                 error: true /* if there was any error, error message will be displayed */
             })
-
+            console.log(error)
         })
         window.addEventListener("scroll", this.handleScroll);
-
     }
 
     componentWillUnmount() {
